@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Configurations>Debug;Release;Production</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.4" />
+    <PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2020.1.406" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SIGT.EFCore\SIGT.EFCore.csproj" />
+    <ProjectReference Include="..\SIGT.Entities\SIGT.Entities.csproj" />
+    <ProjectReference Include="..\SIGT.Infrastructure\SIGT.Infrastructure.csproj" />
+    <ProjectReference Include="..\SIGT.Services\SIGT.Services.csproj" />
+  </ItemGroup>
+</Project>
