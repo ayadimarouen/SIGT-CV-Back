@@ -17,8 +17,7 @@ namespace SIGT.Services
 
         public async Task<CvDTO> ReadCV()
         {
-            return await _cvRepository.ReadCV();
-            
+            return await _cvRepository.ReadCV();      
         }
     }
 }

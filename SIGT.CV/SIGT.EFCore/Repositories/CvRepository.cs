@@ -61,18 +61,20 @@ namespace SIGT.EFCore.Repositories
             List<Experience> experience = await dbContext.Experience.Include(p => p.SkillsExperience).Where(p => p.CvId == cvId).OrderByDescending(p=>p.DateFrom).ToListAsync();
             foreach (Experience expr in experience)
             {
-                ExperienceDTO buildExperience = new ExperienceDTO();
                 List<string> skills = dbContext.SkillsExperience.Where(p => p.ExperienceId == expr.Id).Select(p => p.Skills.Label).ToList();
                 List<TasksDTO> tasks = dbContext.Tasks.Where(p => p.ExperienceId == expr.Id).Select(p => new TasksDTO
                 {
-                    Label=p.Label
+                    Label = p.Label
                 }).ToList();
-                buildExperience.Company = expr.Company;
-                buildExperience.DateFrom = expr.DateFrom;
-                buildExperience.DateTo = expr.DateTo;
-                buildExperience.Title = expr.Title;
-                buildExperience.Skills = skills;
-                buildExperience.Tasks = tasks;
+                ExperienceDTO buildExperience = new ExperienceDTO
+                {
+                    Company = expr.Company,
+                    DateFrom = expr.DateFrom,
+                    DateTo = expr.DateTo,
+                    Title = expr.Title,
+                    Skills = skills,
+                    Tasks = tasks,
+                };
                 experienceList.Add(buildExperience);
             }
             return experienceList;           
